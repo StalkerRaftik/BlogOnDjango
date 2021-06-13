@@ -1,0 +1,8 @@
+{% extends "registration/base_login.html" %}
+
+{% block login %}
+<p>Вы вышли из аккаунта</p>
+
+<a href="{% url 'login'%}">Нажмите здесь, чтобы войти в аккаунт заново.</a>
+<a href="{% url 'home'%}">Либо сюда, чтобы вернуться обратно на сайт.</a>
+{% endblock %}

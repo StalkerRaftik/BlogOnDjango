@@ -1,0 +1,59 @@
+<!-- templates/post_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-break container">
+  <div class="row">
+    <div class="p-5">
+      <div class="col align-items-start">
+        <small>{{ post.date }}</small>
+        <div class="d-flex w-100 justify-content-between">
+          <h2 class="mb-1">{{ post.title }}</h5>
+        </div>
+        <div>
+          <big>{{ post.body }}</big>
+        </div>
+        <br>
+        <div class="row justify-content-end" id="author-label">
+          Автор: {{ post.author }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  {% if not user.is_authenticated %}
+  <div class="row">
+    <small class="fst-italic">Чтобы оставлять комментарии, зарегистрируйтесь на сайте.</small>
+  </div>
+  {% endif %}
+  <div class="row">
+    <h4>Комментарии:</h4>
+  </div>
+  {% if user.is_authenticated %}
+  <div class="row" id="new-post-input">
+    <form class="col-11" method="POST">
+      {% csrf_token %}
+      {{ comment_form.body }}
+      <div class="pt-2 col row justify-content-end">
+        <button type="submit" class="btn btn-outline-dark">Отправить</button>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+  {% for comment in comments reversed %}
+  <div class="row">
+    <div class="p-2">
+      <small>{{ comment.date }}</small>
+      <div class="d-flex w-100 justify-content-between ">
+        <h5 class="mb-1 text-break">{{ comment.author }}</h5>
+        <!--          <small>3 days ago</small>-->
+      </div>
+      <div class="text-break list-group-item">
+        {{ comment.body }}
+      </div>
+      <br>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

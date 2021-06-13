@@ -1,0 +1,10 @@
+#header-label {
+  font-weight: lighter;
+  font-size: 24px;
+}
+
+.text-break {
+  word-break: break-all !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}

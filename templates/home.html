@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+
+<div class="container">
+  {% if user.is_authenticated and can_add_posts %}
+  <div class="row" id="new-post-input">
+    <form class="col-11" method="POST">
+      <a class=" new-post-label" data-bs-toggle="collapse" href="#newPostCollapse" role="button" aria-expanded="true"
+        aria-controls="#newPostCollapse">
+        Опубликовать новый пост
+      </a>
+      <div class="collapse mt-2" id="newPostCollapse">
+        {% csrf_token %}
+        {{ post_form.title }}
+        <div class="mt-2">
+          {{ post_form.body }}
+        </div>
+        <div class="p-2 col row justify-content-end">
+          <button type="submit" class="btn btn-outline-dark">Запостить!</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr>
+  {% endif %}
+  <br>
+  {% for post in all_posts reversed %}
+  <div class="row">
+    <div class="p-2">
+      <a href="{% url 'post_detail' post.pk %}"
+        class="bShadow-65 list-group-item list-group-item-action flex-column align-items-start">
+        <small>{{post.date}}</small>
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1 text-break">{{ post.title }}</h5>
+          <!--          <small>3 days ago</small>-->
+        </div>
+        <div class="text-break">{{ post.body }}</div>
+        <br>
+        <div class="col row justify-content-end" id="author-label">
+          {{ post.author }}
+        </div>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+  <br>
+</div>
+{% endblock content %}

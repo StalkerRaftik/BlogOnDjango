@@ -1,0 +1,19 @@
+.form-signup {
+    width: 100%;
+    
+    max-width: 630px;
+
+    margin: auto;
+  }
+  
+  .form-signup .checkbox {
+    font-weight: 400;
+  }
+  
+  .form-signup .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  #registration-button-submit {
+    width: 100%;
+  }

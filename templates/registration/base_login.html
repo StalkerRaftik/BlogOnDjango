@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="/static/css/registration/base_login.css">
+</head>
+
+<div>
+    <main class="form-signin" id="login-block">
+        {% block login %}
+        {% endblock login %}
+    </main>
+</div>
+
+{% endblock %}

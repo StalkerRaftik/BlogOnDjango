@@ -1,0 +1,12 @@
+#author-label {
+    font-weight: lighter;
+}
+
+#new-post-input {
+    margin-top: 30px;
+}
+#new-post-label {
+    font-weight: lighter;
+  }
+
+  .bShadow-65,.bShadow-65h:hover{box-shadow: 10px 10px 8px -10px rgb(0 0 0 / 26%)!important;}

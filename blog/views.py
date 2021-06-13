@@ -60,6 +60,7 @@ def registration(request):
         for user in users:
             if username == user.username:
                 answer.append("Такое имя пользователя уже занято")
+                break
         return answer
 
     def password_check(password, password_repeat):
